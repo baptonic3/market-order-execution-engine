@@ -243,7 +243,7 @@ Import `postman_collection.json` into Postman for easy API testing.
 
 ## 📄 License
 
-MIT
+[MIT](LICENSE)
 
 ## 🤝 Contributing
 
