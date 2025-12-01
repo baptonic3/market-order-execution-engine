@@ -1,0 +1,97 @@
+{
+  "info": {
+    "name": "Order Execution Engine",
+    "description": "API collection for order execution engine with WebSocket support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Create Market Order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": \"user-123\",\n  \"type\": \"market\",\n  \"tokenIn\": \"SOL\",\n  \"tokenOut\": \"USDC\",\n  \"amountIn\": 1.5,\n  \"slippageTolerance\": 0.01\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/orders/execute",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "orders", "execute"]
+        }
+      }
+    },
+    {
+      "name": "Get Order by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/orders/:orderId",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "orders", ":orderId"],
+          "variable": [
+            {
+              "key": "orderId",
+              "value": "your-order-id-here"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get User Orders",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/orders/user/:userId",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "orders", "user", ":userId"],
+          "variable": [
+            {
+              "key": "userId",
+              "value": "user-123"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Queue Statistics",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/orders/queue/stats",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "orders", "queue", "stats"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ]
+}
+
